@@ -1,6 +1,6 @@
 package ru.ifmo.soclosetoheaven.areas
 
-import ru.ifmo.soclosetoheaven.models.Point
+import ru.ifmo.soclosetoheaven.model.Point
 
 class JointArea(
     vararg areas: Area
