@@ -1,4 +1,4 @@
-package ru.ifmo.soclosetoheaven.models
+package ru.ifmo.soclosetoheaven.model
 
 open class Point(
     val x: Double,
