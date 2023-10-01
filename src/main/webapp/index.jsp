@@ -10,6 +10,7 @@
 <head>
     <title>ITMO WEB #2 - JSP</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="icon" href="<%=request.getContextPath()%>/resources/img/favicon.ico">
     <script defer>
         const POINTS = <%= jsonData %>;
         const ROUNDING_ACCURACY = 5;
@@ -23,8 +24,9 @@
         }
     </script>
 </head>
-<body class="bg-container">
-        <div class="container border border-primary rounded text-center mt-5">
+<body>
+        <jsp:include page="./components/nav.jsp" />
+        <div class="container border border-primary rounded text-center ">
             <canvas
                     id="graph-canvas"
                     width="300"
@@ -32,7 +34,7 @@
                     onmousemove="drawPointer(event)"
                     onmouseleave="fillGraph()"
                     onmousedown="sendPointOnClick(event)"
-                    class="border border-primary rounded mt-5 mb-5 "
+                    class="border border-primary rounded mt-5 mb-5 bg-secondary"
             >
             </canvas>
         </div>
@@ -41,7 +43,7 @@
                 method="post"
                 action="./check-hit-controller"
                 onsubmit="sendForm(event)"
-                class="d-grid gap-3 container border border-primary rounded text-center w-50 p-3 mt-5"
+                class="d-grid gap-3 container border border-primary rounded text-center w-50 p-3 mt-5 bg-indigo"
         >
             <h3 class="text-center mb-4">Enter point data</h3>
             <div class="input-group">
@@ -79,7 +81,7 @@
             </div>
             <div class="form-group">
                 <label class="alert alert-primary" role="alert" for="r-group">Choose R value</label>
-                <div id="r-group" class="ml-2 mr-2">
+                <div id="r-group">
                     <div class="d-inline-block">
                         <label for="r1" class="d-block">1</label>
                         <input type="radio" class="form-check-input" id="r1" name="r" value="1" checked onchange="fillGraph()">
