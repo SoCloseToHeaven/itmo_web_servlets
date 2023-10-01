@@ -8,6 +8,7 @@ import jakarta.inject.Named
 import ru.ifmo.soclosetoheaven.model.Point
 import ru.ifmo.soclosetoheaven.model.ProcessedPoint
 import ru.ifmo.soclosetoheaven.util.Manager
+import java.time.Instant
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -28,13 +29,13 @@ class PointManager : Manager<Point, ProcessedPoint> {
     val data = ArrayList<ProcessedPoint>()
 
     override fun manage(arg: Point) : ProcessedPoint {
-        val startTime = System.currentTimeMillis()
+        val startTime = System.nanoTime();
 
 
         val processedPoint = ProcessedPoint(
             arg,
             areaManager.manage(arg),
-            System.currentTimeMillis() - startTime,
+            System.nanoTime() - startTime,
             Date(),
             randomRgb()
         )

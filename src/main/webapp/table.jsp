@@ -29,13 +29,13 @@
             class="w-80"
     >
         <table class="table">
-            <thead>
+            <thead class="table-dark">
                 <tr>
                     <th>X</th>
                     <th>Y</th>
                     <th>R</th>
                     <th>Hit?</th>
-                    <th>Processing time</th>
+                    <th>Processing time(ns)</th>
                     <th>Creation date</th>
                     <th>Color</th>
                 </tr>
