@@ -119,4 +119,34 @@ function getR() {
     return r;
 }
 
+
+function sendPointOnClick(event) {
+    event.preventDefault();
+    const rect = canvas.getBoundingClientRect();
+
+    const mouseX = event.clientX - rect.left;
+    const mouseY = event.clientY - rect.top;
+
+    const x = Math.round((mouseX - width / 2) / (width / 3) * getR() * 10**ROUNDING_ACCURACY) / 10**ROUNDING_ACCURACY;
+    const y = Math.round(-(mouseY - height / 2) / (height / 3) * getR() * 10**ROUNDING_ACCURACY) / 10**ROUNDING_ACCURACY;
+    const r = getR();
+
+    const url = new URL("./check-hit-controller", window.location.href);
+    const params = `x=${x}&y=${y}&r=${r}`;
+    url.search = new URLSearchParams(params).toString();
+
+    fetch(url, {
+        method: "POST"
+    }).then(resp => {
+            if (resp.ok) {
+                return resp.json();
+            }
+            throw new Error(resp.statusText);
+        }
+    ).then(resp => {
+        POINTS.push(resp);
+        fillGraph();
+    }).catch(err => console.log(err));
+}
+
 fillGraph();

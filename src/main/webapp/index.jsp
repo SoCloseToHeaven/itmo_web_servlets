@@ -6,6 +6,7 @@
     <title>ITMO WEB #2 - JSP</title>
     <script defer>
         const POINTS = <%= (String) application.getAttribute(AreaCheckServlet.CONTEXT_ATTRIBUTE) %>;
+        const ROUNDING_ACCURACY = 5;
     </script>
     <script defer src="./js/drawGraph.js"></script>
 </head>
@@ -18,6 +19,7 @@
                     height="300"
                     onmousemove="drawPointer(event)"
                     onmouseleave="fillGraph()"
+                    onmousedown="sendPointOnClick(event)"
             >
             </canvas>
         </div>
