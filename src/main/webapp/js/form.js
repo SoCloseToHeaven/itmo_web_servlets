@@ -58,10 +58,13 @@ function validateY() {
     ) {
         sendButton.disabled = true;
         warningLabel.innerHTML = Y_WARNING_TEXT;
+        warningLabel.hidden = false;
+        warningLabel.className = "alert alert-warning" // role="alert"
         return;
     }
     sendButton.disabled = false;
-    warningLabel.innerHTML = '';
+    warningLabel.innerHTML = "Correct Y value!";
+    warningLabel.className = "alert alert-success";
 }
 
 validateY();
