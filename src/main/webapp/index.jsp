@@ -17,7 +17,7 @@
                     width="300"
                     height="300"
                     onmousemove="drawPointer(event)"
-                    onmousedown="drawPointer(event)"
+                    onmouseleave="fillGraph()"
             >
             </canvas>
         </div>
@@ -28,7 +28,7 @@
                   <option value="-1.5">-1.5</option>
                   <option value="-1">-1</option>
                   <option value="-0.5">-0.5</option>
-                  <option value="0">0</option>
+                  <option value="0" selected>0</option>
                   <option value="0.5">0.5</option>
                   <option value="1">1</option>
                   <option value="1.5">1.5</option>
@@ -39,11 +39,11 @@
                 <input type="text" name="y" placeholder="Type Y value" />
             </div>
             <div>
-                <input type="radio" name="r" value="1" checked>
-                <input type="radio" name="r" value="2">
-                <input type="radio" name="r" value="3">
-                <input type="radio" name="r" value="4">
-                <input type="radio" name="r" value="5">
+                <input type="radio" name="r" value="1" checked onchange="fillGraph()">
+                <input type="radio" name="r" value="2" onchange="fillGraph()">
+                <input type="radio" name="r" value="3" onchange="fillGraph()">
+                <input type="radio" name="r" value="4" onchange="fillGraph()">
+                <input type="radio" name="r" value="5" onchange="fillGraph()">
             </div>
             <div>
                 <input type="button" placeholder="Send"/>
