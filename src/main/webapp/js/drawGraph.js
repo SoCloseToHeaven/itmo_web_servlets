@@ -115,8 +115,7 @@ function drawPointer(event) {
 function getR() {
     const checkedR = document.querySelector(
         'input[name="r"]:checked');
-    const r = Number.parseFloat(checkedR.value);
-    return r;
+    return Number.parseFloat(checkedR.value);
 }
 
 

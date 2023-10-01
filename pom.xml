@@ -34,14 +34,6 @@
       <version>4.0.1</version>
       <scope>provided</scope>
     </dependency>
-    <!-- https://mvnrepository.com/artifact/org.wildfly/wildfly-weld-ejb -->
-    <dependency>
-      <groupId>org.wildfly</groupId>
-      <artifactId>wildfly-weld-ejb</artifactId>
-      <version>29.0.1.Final</version>
-    </dependency>
-
-
     <!-- https://mvnrepository.com/artifact/org.wildfly/wildfly-release -->
     <dependency>
       <groupId>org.wildfly</groupId>
