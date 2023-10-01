@@ -1,12 +1,55 @@
+<%@ page import="ru.ifmo.soclosetoheaven.AreaCheckServlet" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 <!DOCTYPE html>
 <html>
 <head>
-  <title>JSP - Hello World</title>
+    <title>ITMO WEB #2 - JSP</title>
+    <script defer>
+        const POINTS = <%= (String) application.getAttribute(AreaCheckServlet.CONTEXT_ATTRIBUTE) %>;
+    </script>
+    <script defer src="./js/drawGraph.js"></script>
 </head>
 <body>
-<h1><%= "Hello World!" %></h1>
-<br/>
-<a href="hello-servlet">Hello Servlet</a>
+    <div>
+        <div id="graph">
+            <canvas
+                    id="graph-canvas"
+                    width="300"
+                    height="300"
+                    onmousemove="drawPointer(event)"
+                    onmousedown="drawPointer(event)"
+            >
+            </canvas>
+        </div>
+        <form method="post" action="./check-hit-controller">
+            <div>
+              <select name="x">
+                  <option>-2</option>
+                  <option>-1.5</option>
+                  <option>-1</option>
+                  <option>-0.5</option>
+                  <option>0</option>
+                  <option>0.5</option>
+                  <option>1</option>
+                  <option>1.5</option>
+                  <option>2</option>
+              </select>
+            </div>
+            <div>
+                <input type="text" name="y" placeholder="Type Y value"/>
+            </div>
+            <div>
+                <input type="radio" name="r" value="1" checked>
+                <input type="radio" name="r" value="2">
+                <input type="radio" name="r" value="3">
+                <input type="radio" name="r" value="4">
+                <input type="radio" name="r" value="5">
+            </div>
+            <div>
+              <input type="submit">
+            </div>
+        </form>
+    </div>
 </body>
 </html>

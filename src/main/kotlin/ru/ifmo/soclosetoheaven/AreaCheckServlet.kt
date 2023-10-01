@@ -32,7 +32,7 @@ class AreaCheckServlet : HttpServlet() {
                 req.getParameter(PointFilter.R_REQ_PARAM).toDouble()
             )
         )
-        servletContext.setAttribute(CONTEXT_ATTRIBUTE, pointManager.data)
+        servletContext.setAttribute(CONTEXT_ATTRIBUTE, jsonParser.stringify(pointManager.data))
 
         resp.contentType = JSON_CONTENT_TYPE
 

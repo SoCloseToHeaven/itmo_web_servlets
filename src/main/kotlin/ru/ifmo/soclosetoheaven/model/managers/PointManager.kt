@@ -3,6 +3,7 @@ package ru.ifmo.soclosetoheaven.model.managers
 
 import jakarta.enterprise.context.ApplicationScoped
 import jakarta.inject.Inject
+import jakarta.inject.Named
 
 import ru.ifmo.soclosetoheaven.model.Point
 import ru.ifmo.soclosetoheaven.model.ProcessedPoint
@@ -12,6 +13,7 @@ import kotlin.collections.ArrayList
 
 
 @ApplicationScoped
+@Named(value = "pointManager")
 class PointManager : Manager<Point, ProcessedPoint> {
 
 
