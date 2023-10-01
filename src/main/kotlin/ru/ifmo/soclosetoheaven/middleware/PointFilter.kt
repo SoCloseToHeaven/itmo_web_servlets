@@ -14,6 +14,8 @@ class PointFilter : HttpFilter() {
         const val X_REQ_PARAM = "x"
         const val Y_REQ_PARAM = "y"
         const val R_REQ_PARAM = "r"
+        const val X_Y_BOUND = 8.0
+        val R_VALUES = arrayOf(1.0, 2.0, 3.0, 4.0, 5.0)
     }
 
 
@@ -24,9 +26,14 @@ class PointFilter : HttpFilter() {
 
         if (x == null || y == null || r == null) {
             servletContext.getRequestDispatcher("/error").forward(req, res)
-        } else {
-            chain.doFilter(req, res)
+            return
         }
+
+        if (x !in -X_Y_BOUND..X_Y_BOUND || y !in -X_Y_BOUND..X_Y_BOUND || r !in R_VALUES) {
+            servletContext.getRequestDispatcher("/error").forward(req, res)
+            return
+        }
+        chain.doFilter(req, res)
 
 
     }
