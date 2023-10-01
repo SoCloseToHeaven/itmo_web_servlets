@@ -34,6 +34,8 @@
       <version>4.0.1</version>
       <scope>provided</scope>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/taglibs/standard -->
+
     <!-- https://mvnrepository.com/artifact/org.wildfly/wildfly-release -->
     <dependency>
       <groupId>org.wildfly</groupId>

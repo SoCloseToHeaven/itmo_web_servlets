@@ -16,6 +16,7 @@ class AreaCheckServlet : HttpServlet() {
 
     companion object {
         const val CONTEXT_ATTRIBUTE = "point-data"
+        const val CONTEXT_ATTRIBUTE_LIST = "point-data-list"
         const val JSON_CONTENT_TYPE = "application/json"
     }
 
@@ -33,6 +34,7 @@ class AreaCheckServlet : HttpServlet() {
             )
         )
         servletContext.setAttribute(CONTEXT_ATTRIBUTE, jsonParser.stringify(pointManager.data))
+        servletContext.setAttribute(CONTEXT_ATTRIBUTE_LIST, pointManager.data)
 
         resp.contentType = JSON_CONTENT_TYPE
 

@@ -1,4 +1,7 @@
-<%--
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="ru.ifmo.soclosetoheaven.model.ProcessedPoint" %>
+<%@ page import="ru.ifmo.soclosetoheaven.AreaCheckServlet" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: Дмитрий
   Date: 01.10.2023
@@ -6,6 +9,13 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    List<ProcessedPoint> data;
+    if (application.getAttribute(AreaCheckServlet.CONTEXT_ATTRIBUTE) != null)
+        data = (ArrayList<ProcessedPoint>) application.getAttribute(AreaCheckServlet.CONTEXT_ATTRIBUTE_LIST);
+    else
+        data = null;
+%>
 <html>
 <head>
     <title>ITMO WEB #2 - JSP</title>
@@ -14,12 +24,40 @@
 </head>
 <body>
     <jsp:include page="./components/nav.jsp" />
-    <div id="results-table">
-        <table>
+    <div
+            id="results-table"
+            class="w-80"
+    >
+        <table class="table">
             <thead>
-                <th></th>
+                <tr>
+                    <th>X</th>
+                    <th>Y</th>
+                    <th>R</th>
+                    <th>Hit?</th>
+                    <th>Processing time</th>
+                    <th>Creation date</th>
+                    <th>Color</th>
+                </tr>
             </thead>
-
+            <tbody>
+                <%
+                    if (data != null) {
+                        for (ProcessedPoint point : data) { %>
+                            <tr>
+                                <td><%= point.getX()%></td>
+                                <td><%= point.getY()%></td>
+                                <td><%= point.getR()%></td>
+                                <td><%= point.getHit()%></td>
+                                <td><%= point.getProcessingTime()%></td>
+                                <td><%= point.getCreationDate()%></td>
+                                <td><%= point.getColor()%></td>
+                            </tr>
+                    <%
+                        }
+                    }
+                %>
+            </tbody>
         </table>
     </div>
 </body>
