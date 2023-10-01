@@ -1,6 +1,5 @@
 <%@ page import="ru.ifmo.soclosetoheaven.AreaCheckServlet" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,19 +24,19 @@
         <form method="post" action="./check-hit-controller">
             <div>
               <select name="x">
-                  <option>-2</option>
-                  <option>-1.5</option>
-                  <option>-1</option>
-                  <option>-0.5</option>
-                  <option>0</option>
-                  <option>0.5</option>
-                  <option>1</option>
-                  <option>1.5</option>
-                  <option>2</option>
+                  <option value="-2">-2</option>
+                  <option value="-1.5">-1.5</option>
+                  <option value="-1">-1</option>
+                  <option value="-0.5">-0.5</option>
+                  <option value="0">0</option>
+                  <option value="0.5">0.5</option>
+                  <option value="1">1</option>
+                  <option value="1.5">1.5</option>
+                  <option value="2">2</option>
               </select>
             </div>
             <div>
-                <input type="text" name="y" placeholder="Type Y value"/>
+                <input type="text" name="y" placeholder="Type Y value" />
             </div>
             <div>
                 <input type="radio" name="r" value="1" checked>
@@ -47,7 +46,7 @@
                 <input type="radio" name="r" value="5">
             </div>
             <div>
-              <input type="submit">
+                <input type="button" placeholder="Send"/>
             </div>
         </form>
     </div>

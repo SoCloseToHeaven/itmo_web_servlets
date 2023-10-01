@@ -17,23 +17,24 @@ function fillGraph() {
 
 
     ctx.fillStyle = FIGURE_COLOR;
-    // First sector
+    // Second sector
     ctx.beginPath();
-    ctx.moveTo(width / 6 * 4, height / 2);
-    ctx.lineTo(width / 6 * 4, height / 6);
+
+    ctx.moveTo(width / 6, height / 2);
     ctx.lineTo(width / 2, height / 6);
     ctx.lineTo(width / 2, height / 2);
     ctx.fill();
-    // Second sector
-    ctx.beginPath();
-    ctx.moveTo(width / 2, height / 2);
-    ctx.arc(width / 2, height / 2, width /6, Math.PI, Math.PI * 3 / 2);
-    ctx.fill();
     // Third sector
     ctx.beginPath();
-    ctx.moveTo(width / 2, height * 5 / 6);
-    ctx.lineTo(width / 6 * 5, height / 2);
-    ctx.lineTo(width / 2, height / 2);
+    ctx.moveTo(width / 2, height / 2);
+    ctx.arc(width / 2, height / 2, width / 6,Math.PI / 2, Math.PI);
+    ctx.fill()
+    // Fourth sector
+    ctx.beginPath();
+    ctx.moveTo(width / 2, height / 2);
+    ctx.lineTo(width / 2, height / 6 * 5);
+    ctx.lineTo(width / 6 * 4, height / 6 * 5);
+    ctx.lineTo(width / 6 * 4, height / 2);
     ctx.fill();
 
     ctx.fillStyle = "black";
