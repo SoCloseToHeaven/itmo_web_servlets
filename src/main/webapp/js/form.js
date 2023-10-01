@@ -67,4 +67,17 @@ function validateY() {
     warningLabel.className = "alert alert-success";
 }
 
+async function clear() {
+    if (!confirm("Are you sure?"))
+        return;
+    await fetch("./clear-controller", {
+        method: "POST"
+    }).then(resp => {
+        if (!resp.ok)
+            throw new Error();
+    }).then(resp => {
+        POINTS.splice(0, POINTS.length);
+    }).catch(err => console.log(err));
+}
+
 validateY();
