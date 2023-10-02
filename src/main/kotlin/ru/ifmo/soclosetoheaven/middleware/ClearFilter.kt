@@ -17,8 +17,8 @@ class ClearFilter : HttpFilter() {
 
 
     override fun doFilter(req: HttpServletRequest, res: HttpServletResponse, chain: FilterChain) {
-        if (!req.servletPath.equals(AreaCheckFilter.ALLOWED_URL_PATTERN)) {
-            res.sendError(AreaCheckFilter.ERROR_CODE)
+        if (!req.servletPath.equals(ALLOWED_URL_PATTERN)) {
+            res.sendError(ERROR_CODE)
             return
         }
 
