@@ -1,8 +1,8 @@
 const canvas = document.getElementById("graph-canvas")
 const ctx = canvas.getContext("2d")
 
-const width = 300
-const height = 300
+const width = 600
+const height = 600
 
 
 const labels = ["-R", "-R/2", "0", "R/2", "R"];
