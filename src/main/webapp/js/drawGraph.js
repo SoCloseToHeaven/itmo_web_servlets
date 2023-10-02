@@ -9,7 +9,7 @@ const labels = ["-R", "-R/2", "0", "R/2", "R"];
 const FIGURE_COLOR  = "#9f40de";
 const POINTER_COLOR = "#0f4213";
 const POINT_RADIUS  = 4;
-function fillGraph() {
+export function fillGraph() {
     ctx.save();
     ctx.font = "13px sans-serif";
     ctx.fillStyle = 'white';
@@ -93,7 +93,7 @@ function fillGraph() {
     ctx.restore();
 }
 
-function drawPointer(event) {
+export function drawPointer(event) {
     const rect = canvas.getBoundingClientRect();
     if (!rect)
         return;
@@ -112,14 +112,14 @@ function drawPointer(event) {
     ctx.restore();
 }
 
-function getR() {
+export function getR() {
     const checkedR = document.querySelector(
         'input[name="r"]:checked');
     return Number.parseFloat(checkedR.value);
 }
 
 
-function sendPointOnClick(event) {
+export function sendPointOnClick(event) {
     event.preventDefault();
     const rect = canvas.getBoundingClientRect();
 
@@ -149,3 +149,10 @@ function sendPointOnClick(event) {
 }
 
 fillGraph();
+canvas.addEventListener("mousemove", event => drawPointer(event));
+canvas.addEventListener("mousedown", event => sendPointOnClick(event));
+canvas.addEventListener("mouseleave", event => fillGraph());
+[...document.querySelectorAll('input[name="r"]')].forEach(elem =>
+    {
+        elem.addEventListener("click", event => fillGraph());
+    });

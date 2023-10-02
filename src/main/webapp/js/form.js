@@ -1,3 +1,5 @@
+import * as graph from "./drawGraph.js";
+
 const Y_LOWER_BOUND = -5;
 const Y_UPPER_BOUND = 5;
 const FLOAT_FIVE_DECIMALS_REGEX = /^[+-]?\d+(\.\d{1,5})?$/;
@@ -8,18 +10,18 @@ const sendButton = document.getElementById("send-form")
 const Y_WARNING_TEXT = `X value must be a float number between: ${Y_LOWER_BOUND} 
                     and ${Y_UPPER_BOUND} (inclusive, ${ROUNDING_ACCURACY} decimals places of number)`
 
-async function formSubmit(event) {
+function formSubmit(event) {
     event.preventDefault();
 
     const x = getX();
     const y = getY();
-    const r = getR();
+    const r = graph.getR();
 
     const url = new URL("./check-hit-controller", window.location.href);
     const params = `x=${x}&y=${y}&r=${r}`;
     url.search = new URLSearchParams(params).toString();
 
-    await fetch(url, {
+    fetch(url, {
         method: "POST"
     }).then(resp => {
             if (resp.ok) {
@@ -29,6 +31,7 @@ async function formSubmit(event) {
         }
     ).then(resp => {
         POINTS.push(resp);
+        graph.fillGraph();
     }).catch(err => console.log(err));
 
 }
@@ -42,11 +45,6 @@ function getX() {
 function getY() {
     const typedY = document.getElementById("y");
     return Number.parseFloat(typedY.value);
-}
-function getR() {
-    const checkedR = document.querySelector(
-        'input[name="r"]:checked');
-    return Number.parseFloat(checkedR.value);
 }
 
 function validateY() {
@@ -67,17 +65,22 @@ function validateY() {
     warningLabel.className = "alert alert-success";
 }
 
-async function clear() {
+function clear() {
     if (!confirm("Are you sure?"))
         return;
-    await fetch("./clear-controller", {
+    fetch("./clear-controller", {
         method: "POST"
     }).then(resp => {
         if (!resp.ok)
             throw new Error();
     }).then(resp => {
         POINTS.splice(0, POINTS.length);
+        graph.fillGraph();
     }).catch(err => console.log(err));
 }
 
+
+document.getElementById("point-form").addEventListener("submit", event => formSubmit(event));
+document.getElementById("clear").addEventListener('click', event => clear());
+document.getElementById("y").addEventListener('input', event => validateY());
 validateY();
