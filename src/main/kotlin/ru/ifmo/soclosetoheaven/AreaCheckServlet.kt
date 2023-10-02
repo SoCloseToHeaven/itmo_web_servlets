@@ -15,16 +15,14 @@ import ru.ifmo.soclosetoheaven.model.managers.PointManager
 class AreaCheckServlet : HttpServlet() {
 
     companion object {
-        const val CONTEXT_ATTRIBUTE = "point-data"
-        const val CONTEXT_ATTRIBUTE_LIST = "point-data-list"
         const val JSON_CONTENT_TYPE = "application/json"
     }
 
     @Inject
-    lateinit var pointManager: PointManager
+    private lateinit var pointManager: PointManager
 
     @Inject
-    lateinit var jsonParser: JsonParserBean
+    private lateinit var jsonParser: JsonParserBean
     override fun doPost(req: HttpServletRequest, resp: HttpServletResponse) {
         val processedPoint = pointManager.manage(
             Point(
@@ -33,9 +31,8 @@ class AreaCheckServlet : HttpServlet() {
                 req.getParameter(PointFilter.R_REQ_PARAM).toDouble()
             )
         )
-        servletContext.setAttribute(CONTEXT_ATTRIBUTE, jsonParser.stringify(pointManager.data))
-        servletContext.setAttribute(CONTEXT_ATTRIBUTE_LIST, pointManager.data)
 
+        pointManager.save(servletContext)
         resp.contentType = JSON_CONTENT_TYPE
 
         val writer = resp.writer

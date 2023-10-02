@@ -1,7 +1,7 @@
-<%@ page import="ru.ifmo.soclosetoheaven.AreaCheckServlet" %>
+<%@ page import="ru.ifmo.soclosetoheaven.model.managers.PointManager" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%
-    String jsonData = (String) application.getAttribute(AreaCheckServlet.CONTEXT_ATTRIBUTE);
+    String jsonData = (String) application.getAttribute(PointManager.CONTEXT_ATTRIBUTE);
     if (jsonData == null)
         jsonData = "[]";
 %>

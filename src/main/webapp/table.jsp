@@ -1,7 +1,7 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="ru.ifmo.soclosetoheaven.model.ProcessedPoint" %>
-<%@ page import="ru.ifmo.soclosetoheaven.AreaCheckServlet" %>
-<%@ page import="java.util.List" %><%--
+<%@ page import="java.util.List" %>
+<%@ page import="ru.ifmo.soclosetoheaven.model.managers.PointManager" %><%--
   Created by IntelliJ IDEA.
   User: Дмитрий
   Date: 01.10.2023
@@ -11,8 +11,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     List<ProcessedPoint> data;
-    if (application.getAttribute(AreaCheckServlet.CONTEXT_ATTRIBUTE) != null)
-        data = (ArrayList<ProcessedPoint>) application.getAttribute(AreaCheckServlet.CONTEXT_ATTRIBUTE_LIST);
+    if (application.getAttribute(PointManager.CONTEXT_ATTRIBUTE_LIST) != null)
+        data = (ArrayList<ProcessedPoint>) application.getAttribute(PointManager.CONTEXT_ATTRIBUTE_LIST);
     else
         data = null;
 %>

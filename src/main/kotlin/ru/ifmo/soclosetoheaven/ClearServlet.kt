@@ -18,8 +18,6 @@ class ClearServlet : HttpServlet() {
     lateinit var jsonParser: JsonParserBean
 
     override fun doPost(req: HttpServletRequest, resp: HttpServletResponse) {
-        pointManager.data.clear()
-        servletContext.setAttribute(AreaCheckServlet.CONTEXT_ATTRIBUTE, jsonParser.stringify(pointManager.data))
-        servletContext.setAttribute(AreaCheckServlet.CONTEXT_ATTRIBUTE_LIST, pointManager.data)
+        pointManager.clear(servletContext)
     }
 }
