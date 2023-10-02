@@ -20,6 +20,7 @@
 </head>
 <body>
         <jsp:include page="./components/nav.jsp" />
+        <jsp:include page="./components/header.jsp" />
         <div class="container border border-primary rounded text-center shadow-lg ">
             <canvas
                     id="graph-canvas"
@@ -34,7 +35,7 @@
                 method="post"
                 action="./check-hit-controller"
                 id="point-form"
-                class="d-grid gap-3 container border border-secondary rounded text-center w-50 p-3 mt-5 shadow-lg "
+                class="d-grid gap-3 container border border-secondary rounded text-center w-50 p-3 mt-5"
         >
             <h3 class="text-center mb-4">Enter point data</h3>
             <div class="input-group">
